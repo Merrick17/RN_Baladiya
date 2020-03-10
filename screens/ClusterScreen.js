@@ -1,7 +1,7 @@
 import {Layout, Button, Icon} from '@ui-kitten/components';
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-import CustomCard from '../components/customCard/index';
+import ClusterCard from '../components/clusterCard/index';
 const addIcon = style => <Icon name="plus" />;
 const ClusterScreen = props => (
   <Layout style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -16,7 +16,7 @@ const ClusterScreen = props => (
       }}>
       Add A New Cluster
     </Button>
-    <CustomCard />
+    <ClusterCard />
   </Layout>
 );
 

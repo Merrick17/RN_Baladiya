@@ -6,7 +6,7 @@ import {Button} from 'react-native-elements';
 import {Text} from 'galio-framework';
 import LinearGradient from 'react-native-linear-gradient';
 import {Avatar, Layout} from '@ui-kitten/components';
-export default CustomCard = props => {
+export default ClusterCard = props => {
   return (
     <View style={Btnstyles.main}>
       <View
@@ -16,36 +16,18 @@ export default CustomCard = props => {
           //marginRight: 250,
         }}>
         <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar size="small" source={require('../../assets/can_type.png')} />
-          <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Type: Plastic
-          </Text>
-        </View>
-        <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar size="small" source={require('../../assets/weight.png')} />
-          <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Weight: Test
-          </Text>
-        </View>
-        <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar size="small" source={require('../../assets/time.png')} />
-          <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Service Time: Test
-          </Text>
-        </View>
-        <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar size="small" source={require('../../assets/number.png')} />
-          <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Number In position: Test
-          </Text>
-        </View>
-        <View style={{flexDirection: 'row', marginVertical: 2}}>
           <Avatar
             size="small"
             source={require('../../assets/marker_green.png')}
           />
           <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Cluster: Test
+            Name: Test
+          </Text>
+        </View>
+        <View style={{flexDirection: 'row', marginVertical: 2}}>
+          <Avatar size="small" source={require('../../assets/number.png')} />
+          <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
+            TotalNumbers: Test
           </Text>
         </View>
       </View>

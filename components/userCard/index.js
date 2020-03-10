@@ -6,7 +6,7 @@ import {Button} from 'react-native-elements';
 import {Text} from 'galio-framework';
 import LinearGradient from 'react-native-linear-gradient';
 import {Avatar, Layout} from '@ui-kitten/components';
-export default CustomCard = props => {
+export default UserCard = props => {
   return (
     <View style={Btnstyles.main}>
       <View
