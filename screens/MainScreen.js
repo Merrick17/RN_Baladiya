@@ -74,9 +74,27 @@ const MainScreen = props => {
           props.navigation.navigate('BinScreen');
         }}
       />
-      <BtnItem icon={ClusterIcon} title={'Manage Clusters'} />
-      <BtnItem icon={userIcon} title={'Manage Users'} />
-      <BtnItem icon={truckIcon} title={'Manage Trucks'} />
+      <BtnItem
+        icon={ClusterIcon}
+        title={'Manage Clusters'}
+        action={() => {
+          props.navigation.navigate('ClusterScreen');
+        }}
+      />
+      <BtnItem
+        icon={userIcon}
+        title={'Manage Users'}
+        action={() => {
+          props.navigation.navigate('UsersScreen');
+        }}
+      />
+      <BtnItem
+        icon={truckIcon}
+        title={'Manage Trucks'}
+        action={() => {
+          props.navigation.navigate('UsersScreen');
+        }}
+      />
     </Layout>
   );
 };

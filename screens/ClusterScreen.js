@@ -3,10 +3,10 @@ import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import CustomCard from '../components/customCard/index';
 const addIcon = style => <Icon name="plus" />;
-const BinsScreen = props => (
+const ClusterScreen = props => (
   <Layout style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
     <Button
-    appearance={'outline'}
+      appearance={'outline'}
       style={styles.btn}
       status="primary"
       textStyle={{fontSize: 20}}
@@ -14,13 +14,13 @@ const BinsScreen = props => (
       onPress={() => {
         //props.navigation.navigate('Main');
       }}>
-      Add A New Bin
+      Add A New Cluster
     </Button>
-    <CustomCard/>
+    <CustomCard />
   </Layout>
 );
 
-export default BinsScreen;
+export default ClusterScreen;
 
 const styles = StyleSheet.create({
   input: {
