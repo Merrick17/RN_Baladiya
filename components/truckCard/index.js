@@ -6,7 +6,7 @@ import {Button} from 'react-native-elements';
 import {Text} from 'galio-framework';
 import LinearGradient from 'react-native-linear-gradient';
 import {Avatar, Layout} from '@ui-kitten/components';
-export default CustomCard = props => {
+export default TruckCard = props => {
   return (
     <View style={Btnstyles.main}>
       <View
@@ -16,9 +16,9 @@ export default CustomCard = props => {
           //marginRight: 250,
         }}>
         <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar size="small" source={require('../../assets/can_type.png')} />
+          <Avatar size="small" source={require('../../assets/user.png')} />
           <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Type: Plastic
+            Driver Id: Test
           </Text>
         </View>
         <View style={{flexDirection: 'row', marginVertical: 2}}>
@@ -34,20 +34,12 @@ export default CustomCard = props => {
           </Text>
         </View>
         <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar size="small" source={require('../../assets/number.png')} />
+          <Avatar size="small" source={require('../../assets/essence.png')} />
           <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Number In position: Test
+           Carberon: Test
           </Text>
         </View>
-        <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar
-            size="small"
-            source={require('../../assets/marker_green.png')}
-          />
-          <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Cluster: Test
-          </Text>
-        </View>
+      
       </View>
       <TouchableOpacity style={Btnstyles.icn}>
         <Icon

@@ -12,7 +12,7 @@ const ClusterScreen = props => (
       textStyle={{fontSize: 20}}
       size={'large'}
       onPress={() => {
-        //props.navigation.navigate('Main');
+      props.navigation.navigate('AddCluster');
       }}>
       Add A New Cluster
     </Button>

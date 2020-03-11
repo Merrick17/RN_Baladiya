@@ -16,36 +16,21 @@ export default UserCard = props => {
           //marginRight: 250,
         }}>
         <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar size="small" source={require('../../assets/can_type.png')} />
+          <Avatar size="small" source={require('../../assets/user.png')} />
           <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Type: Plastic
-          </Text>
-        </View>
-        <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar size="small" source={require('../../assets/weight.png')} />
-          <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Weight: Test
-          </Text>
-        </View>
-        <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar size="small" source={require('../../assets/time.png')} />
-          <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Service Time: Test
+            Full Name: Plastic
           </Text>
         </View>
         <View style={{flexDirection: 'row', marginVertical: 2}}>
           <Avatar size="small" source={require('../../assets/number.png')} />
           <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Number In position: Test
+            Auth Id: Test
           </Text>
         </View>
         <View style={{flexDirection: 'row', marginVertical: 2}}>
-          <Avatar
-            size="small"
-            source={require('../../assets/marker_green.png')}
-          />
+          <Avatar size="small" source={require('../../assets/time.png')} />
           <Text color={'#56e39c'} style={Btnstyles.txt} size={20}>
-            Cluster: Test
+            Role: Test
           </Text>
         </View>
       </View>

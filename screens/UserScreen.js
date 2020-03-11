@@ -1,8 +1,9 @@
-import {Layout, Button, Icon} from '@ui-kitten/components';
-import React from 'react';
+import {Layout, Button, Modal} from '@ui-kitten/components';
+import React ,{useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-import CustomCard from '../components/customCard/index';
-const addIcon = style => <Icon name="plus" />;
+import UserCard from '../components/userCard/index';
+
+
 const UsersScreen = props => (
   <Layout style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
     <Button
@@ -12,11 +13,11 @@ const UsersScreen = props => (
       textStyle={{fontSize: 20}}
       size={'large'}
       onPress={() => {
-        //props.navigation.navigate('Main');
+        props.navigation.navigate('AddUser');
       }}>
       Add A New User
     </Button>
-    <CustomCard />
+    <UserCard />
   </Layout>
 );
 

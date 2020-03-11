@@ -1,7 +1,7 @@
 import {Layout, Button, Icon} from '@ui-kitten/components';
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-import CustomCard from '../components/customCard/index';
+import TruckCard from '../components/truckCard/index';
 const addIcon = style => <Icon name="plus" />;
 const TruckScreen = props => (
   <Layout style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -16,7 +16,7 @@ const TruckScreen = props => (
       }}>
       Add A New Truck
     </Button>
-    <CustomCard />
+    <TruckCard />
   </Layout>
 );
 

@@ -8,13 +8,14 @@ const HomeScreen = (props) => (
       <Image source={require('../assets/recycle.png')} style={styles.logo}/>
       <Input
       style={styles.input}
-      placeholder="Place your Text"
+      placeholder="Auth ID"
       //value={value}
       //onChangeText={setValue}
     />
      <Input
       style={styles.input}
-      placeholder="Place your Text"
+      placeholder="Password"
+      secureTextEntry={true}
       //value={value}
       //onChangeText={setValue}
     />

@@ -92,7 +92,7 @@ const MainScreen = props => {
         icon={truckIcon}
         title={'Manage Trucks'}
         action={() => {
-          props.navigation.navigate('UsersScreen');
+          props.navigation.navigate('TruckScreen');
         }}
       />
     </Layout>
