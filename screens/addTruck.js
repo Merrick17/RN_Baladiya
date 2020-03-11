@@ -5,19 +5,22 @@ import {
   Button,
   RadioGroup,
   Radio,
-  Select
+  Select,
 } from '@ui-kitten/components';
 import React, {useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 
-const AddUser = props => {
+const AddTruck = props => {
   const data = [
     {text: 'Option 1', value: 'text'},
     {text: 'Option 2', value: 'text'},
     {text: 'Option 3', value: 'text'},
   ];
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(  {text: 'Option 1', value: 'text'});
+  const [selectedOption, setSelectedOption] = useState({
+    text: 'Option 1',
+    value: 'text',
+  });
   const onCheckedChange = index => {
     setSelectedIndex(index);
   };
@@ -27,32 +30,25 @@ const AddUser = props => {
       <Layout style={styles.login}>
         <Input
           style={styles.input}
-          placeholder="Name"
+          placeholder="Carberon"
           //value={value}
           //onChangeText={setValue}
         />
         <Input
           style={styles.input}
-          placeholder="First Name"
+          placeholder="Capacity "
           //value={value}
           //onChangeText={setValue}
         />
         <Input
           style={styles.input}
-          placeholder="Auth ID"
+          placeholder="Max Time "
           //value={value}
           //onChangeText={setValue}
         />
         <Input
           style={styles.input}
-          placeholder="Password"
-          secureTextEntry={true}
-          //value={value}
-          //onChangeText={setValue}
-        />
-        <Input
-          style={styles.input}
-          placeholder="Number Of Hours"
+          placeholder="Max Tour Time "
           //value={value}
           //onChangeText={setValue}
         />
@@ -61,10 +57,7 @@ const AddUser = props => {
           selectedOption={selectedOption}
           onSelect={setSelectedOption}
         />
-        <RadioGroup selectedIndex={selectedIndex} onChange={onCheckedChange}>
-          <Radio style={styles.radio} text="Driver" />
-          <Radio style={styles.radio} text="Agent" />
-        </RadioGroup>
+
         <Button
           style={styles.btn}
           status="danger"
@@ -90,7 +83,7 @@ const AddUser = props => {
   );
 };
 
-export default AddUser;
+export default AddTruck;
 
 const styles = StyleSheet.create({
   input: {

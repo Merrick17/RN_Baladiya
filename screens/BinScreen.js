@@ -12,7 +12,7 @@ const BinsScreen = props => (
       textStyle={{fontSize: 20}}
       size={'large'}
       onPress={() => {
-        //props.navigation.navigate('Main');
+        props.navigation.navigate('AddBin');
       }}>
       Add A New Bin
     </Button>

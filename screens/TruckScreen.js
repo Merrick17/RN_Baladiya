@@ -12,7 +12,7 @@ const TruckScreen = props => (
       textStyle={{fontSize: 20}}
       size={'large'}
       onPress={() => {
-        //props.navigation.navigate('Main');
+        props.navigation.navigate('AddTruck');
       }}>
       Add A New Truck
     </Button>

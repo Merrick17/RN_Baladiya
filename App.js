@@ -11,6 +11,8 @@ import UsersScreen from './screens/UserScreen';
 import TruckScreen from './screens/TruckScreen';
 import AddUser from './screens/addUserScreen';
 import AddCluster from './screens/addCluster';
+import AddBin from './screens/addNewBin';
+import AddTruck from './screens/addTruck';
 const NavigationStack = createStackNavigator(
   {
     Login: {screen: HomeScreen},
@@ -19,8 +21,11 @@ const NavigationStack = createStackNavigator(
     ClusterScreen: {screen: ClusterScreen},
     UsersScreen: {screen: UsersScreen},
     TruckScreen: {screen: TruckScreen},
-    AddUser:{screen:AddUser}, 
-    AddCluster:{screen:AddCluster}
+    AddUser: {screen: AddUser},
+    AddCluster: {screen: AddCluster},
+
+    AddBin: {screen: AddBin},
+    AddTruck: {screen: AddTruck},
   },
   {
     initialRouteName: 'Login',
