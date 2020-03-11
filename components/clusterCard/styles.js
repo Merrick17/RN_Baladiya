@@ -2,13 +2,13 @@ import { StyleSheet } from "react-native";
 export const Btnstyles = StyleSheet.create({
   main: {
     marginVertical: 5,
-    backgroundColor: "#313342",
+    backgroundColor: "white",
     borderRadius: 10,
-    height: 200,
-    flexDirection: "row",
+    height: 150,
+    //flexDirection: "row",
     alignContent: "center",
-    alignItems: "center",
-    opacity:0.7,
+    alignItems: "flex-start",
+    //opacity:0.7,
     //justifyContent: 'space-between',
     width:'90%'
   },
