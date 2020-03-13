@@ -9,11 +9,19 @@ import {Avatar, Layout, Button} from '@ui-kitten/components';
 export default TruckCard = props => {
   return (
     <View style={Btnstyles.main}>
-      <Image source={require('../../assets/trash_truck.png')} style={styles.img} />
-      <Text style={styles.txt}>-Carberon: TEST </Text>
-      <Text style={styles.txt}>-Capacity: TEST </Text>
-      <Text style={styles.txt}>-MaxTime: TEST </Text>
-      <Text style={styles.txt}>-Capacity:TEST </Text>
+      <Image
+        source={require('../../assets/cardicon/Truck.png')}
+        style={styles.img}
+      />
+      <View style={styles.content}>
+        <Text style={styles.title}>Carberon </Text>
+        <Text style={styles.txt}>Sans Plomb </Text>
+        <Text style={styles.title}>Max Time </Text>
+        <Text style={styles.txt}>Always </Text>
+        <Text style={styles.title}>Driver </Text>
+        <Text style={styles.txt}>My Driver</Text>
+      </View>
+
       <Button style={styles.btn}>Actions</Button>
     </View>
   );
@@ -22,13 +30,21 @@ const styles = StyleSheet.create({
   img: {
     height: 70,
     width: 70,
-    alignSelf: 'flex-start',
-    marginLeft: 150,
-    marginTop: 10,
+    alignSelf: 'center',
+    //marginLeft: 150,
+    marginTop: -30,
   },
-
+  content: {
+    marginLeft: 25,
+  },
+  title: {
+    //marginLeft: 5,
+    fontSize: 18,
+    marginVertical: 3,
+    //fontWeight: 'bold',
+  },
   txt: {
-    marginLeft: 5,
+    //marginLeft: 5,
     fontSize: 20,
     fontWeight: 'bold',
   },

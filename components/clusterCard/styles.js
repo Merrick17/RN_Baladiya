@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
 export const Btnstyles = StyleSheet.create({
   main: {
-    marginVertical: 5,
-    backgroundColor: "white",
+    marginTop: 45,
+    backgroundColor: "#698AC7",
     borderRadius: 10,
-    height: 150,
+    height: 170,
     //flexDirection: "row",
     alignContent: "center",
     alignItems: "flex-start",
@@ -25,14 +25,14 @@ export const Btnstyles = StyleSheet.create({
     paddingLeft:6
   },
   icn: {
-    color: "white",
-    fontSize: 20,
+    //color: "white",
+    //fontSize: 20,
     //alignContent: "space-around",
     //justifyContent:'flex-end',
     //paddingRight:50,
     position:'absolute',
-    right:20
-  
+    right:20,
+    alignSelf:'center'
   },
  
 });

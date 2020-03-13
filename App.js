@@ -13,6 +13,9 @@ import AddUser from './screens/addUserScreen';
 import AddCluster from './screens/addCluster';
 import AddBin from './screens/addNewBin';
 import AddTruck from './screens/addTruck';
+import MapScreen from './screens/MapScreen';
+import { Provider } from 'react-redux';
+import { store } from './store/index';
 const NavigationStack = createStackNavigator(
   {
     Login: {screen: HomeScreen},
@@ -26,6 +29,7 @@ const NavigationStack = createStackNavigator(
 
     AddBin: {screen: AddBin},
     AddTruck: {screen: AddTruck},
+    Map: {screen: MapScreen},
   },
   {
     initialRouteName: 'Login',
@@ -36,9 +40,13 @@ const NavigationStack = createStackNavigator(
 const App = () => {
   const Navigation = createAppContainer(NavigationStack);
   return (
+   
     <ApplicationProvider mapping={mapping} theme={lightTheme}>
+       <Provider store={store}>
       <Navigation />
+      </Provider>
     </ApplicationProvider>
+    
   );
 };
 
