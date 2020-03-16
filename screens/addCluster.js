@@ -1,9 +1,13 @@
 import {Icon, Input, Layout, Button, RadioGroup,Radio} from '@ui-kitten/components';
 import React, {useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-
+import {addNewCluster} from '../store/clusters/actions';
+import {useDispatch, useSelector} from 'react-redux';
+import {getToken} from '../helpers/tokenActions';
 const AddCluster = props => {
- 
+ const [name,setName]=useState(''); 
+ const [nbr,setNbr]=useState(0); 
+ const dispatch = useDispatch() ; 
   return (
     <Layout
       style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -11,14 +15,14 @@ const AddCluster = props => {
         <Input
           style={styles.input}
           placeholder="Name"
-          //value={value}
-          //onChangeText={setValue}
+          value={name}
+          onChangeText={(text)=>setName(text)}
         />
         <Input
           style={styles.input}
           placeholder="Total Bin Number"
-          //value={value}
-          //onChangeText={setValue}
+          value={nbr.toString()}
+          onChangeText={(text)=>setNbr(Number(text))}
         />
        
       
@@ -28,7 +32,17 @@ const AddCluster = props => {
           textStyle={{fontSize: 20}}
           size={'large'}
           onPress={() => {
-            props.navigation.navigate('Main');
+            getToken().then(data => {
+              console.log('Daaaataaa', data);
+              let token = data;
+              console.log('retireve token', );
+              let cluster = {
+                "name": name,
+                "nbrBin": nbr
+              }
+              dispatch(addNewCluster(cluster,props.navigation,JSON.parse(token)));
+            });
+           
           }}>
           Add
         </Button>

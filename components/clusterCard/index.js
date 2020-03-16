@@ -7,11 +7,13 @@ import {Text} from 'galio-framework';
 import LinearGradient from 'react-native-linear-gradient';
 import {Avatar, Layout, Button} from '@ui-kitten/components';
 import {deleteClusterData} from '.././../store/clusters/actions';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {getToken} from '../../helpers/tokenActions';
 export default ClusterCard = props => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-  //console.log("props", props.name);
+  const state = useState(state => state);
+
   return (
     <View style={Btnstyles.main}>
       <Image
@@ -43,7 +45,14 @@ export default ClusterCard = props => {
         <SCLAlertButton
           theme="info"
           onPress={() => {
-            dispatch(deleteClusterData(props.id));
+            getToken().then(data => {
+              console.log('Daaaataaa', data);
+              let token = data;
+              console.log('retireve token', );
+              dispatch(deleteClusterData(props.id,JSON.parse(token)));
+            });
+
+            //
 
             setShow(false);
           }}>

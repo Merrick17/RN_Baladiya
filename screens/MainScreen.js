@@ -17,7 +17,7 @@ import {
 } from 'react-native-chart-kit';
 const MainScreen = props => {
   const state = useSelector(state => state);
-  //console.log("My Clusters",state.clusterState); 
+
   const dispatcher = useDispatch();
   return (
     <Layout

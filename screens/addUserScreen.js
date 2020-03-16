@@ -5,19 +5,25 @@ import {
   Button,
   RadioGroup,
   Radio,
-  Select
+  Select,
 } from '@ui-kitten/components';
 import React, {useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import {View, StyleSheet, Image} from 'react-native';
 
 const AddUser = props => {
-  const data = [
-    {text: 'Option 1', value: 'text'},
-    {text: 'Option 2', value: 'text'},
-    {text: 'Option 3', value: 'text'},
-  ];
+  let data = [];
+  const state = useSelector(state => state);
+  state.clusterState.forEach(elm => {
+   let cluster = {
+      text: elm.name,
+      value: elm._id,
+    };
+    data.push(cluster);
+  });
+
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(  {text: 'Option 1', value: 'text'});
+  const [selectedOption, setSelectedOption] = useState(data[0]);
   const onCheckedChange = index => {
     setSelectedIndex(index);
   };
