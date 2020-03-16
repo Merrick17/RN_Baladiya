@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {Btnstyles} from './styles';
 import Icon from 'react-native-vector-icons/AntDesign';
-
+import {SCLAlert, SCLAlertButton} from 'react-native-scl-alert';
 import {Text} from 'galio-framework';
 import LinearGradient from 'react-native-linear-gradient';
 import {Avatar, Layout, Button} from '@ui-kitten/components';
+import {deleteClusterData} from '.././../store/clusters/actions';
+import {useDispatch} from 'react-redux';
 export default ClusterCard = props => {
+  const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+  //console.log("props", props.name);
   return (
     <View style={Btnstyles.main}>
       <Image
@@ -15,12 +20,51 @@ export default ClusterCard = props => {
       />
       <View style={styles.content}>
         <Text style={styles.title}>Name </Text>
-        <Text style={styles.txt}>TEST </Text>
+        <Text style={styles.txt}>{props.name}</Text>
         <Text style={styles.title}>Total Bins Number</Text>
-        <Text style={styles.txt}>Test </Text>
+        <Text style={styles.txt}>{props.totalBin}</Text>
       </View>
+      <SCLAlert
+        theme="info"
+        show={show}
+        title=""
+        subtitle=""
+        headerContainerStyles={{backgroundColor: '#698AC7'}}
+        onRequestClose={() => {
+          console.log('closed');
+        }}>
+        <SCLAlertButton
+          theme="info"
+          onPress={() => {
+            setShow(false);
+          }}>
+          Edit
+        </SCLAlertButton>
+        <SCLAlertButton
+          theme="info"
+          onPress={() => {
+            dispatch(deleteClusterData(props.id));
 
-      <Button style={styles.btn}>Actions</Button>
+            setShow(false);
+          }}>
+          Delete
+        </SCLAlertButton>
+        <SCLAlertButton
+          theme="danger"
+          onPress={() => {
+            setShow(false);
+          }}>
+          Cancel
+        </SCLAlertButton>
+      </SCLAlert>
+      <Button
+        style={styles.btn}
+        appearance={'outline'}
+        onPress={() => {
+          setShow(true);
+        }}>
+        Actions
+      </Button>
     </View>
   );
 };
@@ -38,7 +82,7 @@ const styles = StyleSheet.create({
   title: {
     //marginLeft: 5,
     fontSize: 18,
-    marginVertical:3
+    marginVertical: 3,
     //fontWeight: 'bold',
   },
   txt: {
@@ -48,8 +92,8 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: '90%',
+    marginTop: 3,
     //marginLeft:10,
     alignSelf: 'center',
-    
   },
 });

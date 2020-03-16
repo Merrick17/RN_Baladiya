@@ -6,6 +6,7 @@ import TrashIcon from '../icons/trashIcon';
 import ClusterIcon from '../icons/clusterIcon';
 import userIcon from '../icons/personIcon';
 import truckIcon from '../icons/truckIcon';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   LineChart,
   BarChart,
@@ -15,6 +16,9 @@ import {
   StackedBarChart,
 } from 'react-native-chart-kit';
 const MainScreen = props => {
+  const state = useSelector(state => state);
+  //console.log("My Clusters",state.clusterState); 
+  const dispatcher = useDispatch();
   return (
     <Layout
       style={{

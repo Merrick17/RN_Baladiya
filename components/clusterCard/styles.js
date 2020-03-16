@@ -4,7 +4,7 @@ export const Btnstyles = StyleSheet.create({
     marginTop: 45,
     backgroundColor: "#698AC7",
     borderRadius: 10,
-    height: 170,
+    height: 210,
     //flexDirection: "row",
     alignContent: "center",
     alignItems: "flex-start",

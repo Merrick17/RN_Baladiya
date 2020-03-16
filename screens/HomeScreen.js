@@ -1,46 +1,64 @@
 import {Icon, Input, Layout, Button} from '@ui-kitten/components';
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-const HomeScreen = props => (
-  <Layout style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
-    <Layout style={styles.login}>
-      <Image source={require('../assets/recycle.png')} style={styles.logo} />
-      <Input
-        style={styles.input}
-        placeholder="Auth ID"
-        //value={value}
-        //onChangeText={setValue}
-      />
-      <Input
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry={true}
-        //value={value}
-        //onChangeText={setValue}
-      />
-      <Button
-        style={styles.btn}
-        status="danger"
-        textStyle={{fontSize: 20}}
-        size={'large'}
-        onPress={() => {
-          props.navigation.navigate('Main');
-        }}>
-        Sign in{' '}
-      </Button>
-      <Button
-        style={styles.btn}
-        status="danger"
-        textStyle={{fontSize: 20}}
-        size={'large'}
-        onPress={() => {
-          props.navigation.navigate('Map');
-        }}>
-        Sign in{' '}
-      </Button>
+import {asyncloginUser} from '../store/loggedIn/actions';
+import {useDispatch} from 'react-redux';
+const HomeScreen = props => {
+  const dispatch = useDispatch();
+  [authId, setAuthID] = useState('');
+  [password, setPassword] = useState('');
+  return (
+    <Layout
+      style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
+      <Layout style={styles.login}>
+        <Image source={require('../assets/recycle.png')} style={styles.logo} />
+        <Input
+          style={styles.input}
+          placeholder="Auth ID"
+          value={authId}
+          onChangeText={text => {
+            setAuthID(text);
+          }}
+        />
+        <Input
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={true}
+          value={password}
+          //value={value}
+          onChangeText={text => {
+            setPassword(text);
+          }}
+        />
+        <Button
+          style={styles.btn}
+          status="danger"
+          textStyle={{fontSize: 20}}
+          size={'large'}
+          onPress={() => {
+            let user = {
+              auth_id: authId,
+              password: password,
+            };
+            //props.navigation.navigate('Main');
+            dispatch(asyncloginUser(user, props.navigation));
+          }}>
+          Sign in{' '}
+        </Button>
+        <Button
+          style={styles.btn}
+          status="danger"
+          textStyle={{fontSize: 20}}
+          size={'large'}
+          onPress={() => {
+            props.navigation.navigate('Map');
+          }}>
+          Sign in{' '}
+        </Button>
+      </Layout>
     </Layout>
-  </Layout>
-);
+  );
+};
 
 export default HomeScreen;
 
