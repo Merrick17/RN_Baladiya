@@ -1,5 +1,6 @@
 import {fetchClusters} from '../clusters/actions';
 import {saveUserToken} from '../../helpers/tokenActions';
+import {fetchBins} from '../bin/actions';
 export const LoginUser = data => {
   return {
     type: 'LOGIN_USER',
@@ -32,6 +33,7 @@ export const asyncloginUser = (user, navigation) => {
       if (responseJson.token) {
         saveUserToken(responseJson.token);
         dispatch(fetchClusters(responseJson.token));
+        dispatch(fetchBins(responseJson.token));
         dispatch(LoginUser(responseJson));
 
         navigation.replace('Main');

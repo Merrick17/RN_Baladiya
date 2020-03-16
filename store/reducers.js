@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
 import {userState} from './loggedIn/index';
 import {clusterState} from './clusters/index';
-
-export default rootReducer = combineReducers({userState, clusterState});
+import {BinState} from './bin/index';
+export default rootReducer = combineReducers({userState, clusterState,BinState});
