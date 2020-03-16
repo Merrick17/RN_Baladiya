@@ -67,7 +67,13 @@ export default CustomCard = props => {
           Cancel
         </SCLAlertButton>
       </SCLAlert>
-      <Button style={styles.btn}>Actions</Button>
+      <Button
+        style={styles.btn}
+        onPress={() => {
+          setShow(true);
+        }}>
+        Actions
+      </Button>
     </View>
   );
 };
