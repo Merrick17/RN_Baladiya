@@ -1,6 +1,8 @@
 import {fetchClusters} from '../clusters/actions';
 import {saveUserToken} from '../../helpers/tokenActions';
-import {fetchBins} from '../bin/actions';
+import {fetchBins, fetchBinsByCluster} from '../bin/actions';
+import {fetchUsers} from '../users/actions';
+import {fetchTrucks} from '../trucks/action';
 export const LoginUser = data => {
   return {
     type: 'LOGIN_USER',
@@ -31,12 +33,24 @@ export const asyncloginUser = (user, navigation) => {
       );
       let responseJson = await response.json();
       if (responseJson.token) {
-        saveUserToken(responseJson.token);
-        dispatch(fetchClusters(responseJson.token));
-        dispatch(fetchBins(responseJson.token));
-        dispatch(LoginUser(responseJson));
+        if (responseJson.role == 1) {
+          saveUserToken(responseJson.token);
+          dispatch(fetchClusters(responseJson.token));
+          dispatch(fetchBins(responseJson.token));
+          dispatch(fetchUsers(responseJson.token));
+          dispatch(fetchTrucks(responseJson.token));
+          dispatch(LoginUser(responseJson));
+          navigation.replace('Main');
+        } else {
+          saveUserToken(responseJson.token);
 
-        navigation.replace('Main');
+          dispatch(
+            fetchBinsByCluster(responseJson.cluster, responseJson.token),
+          );
+
+          dispatch(LoginUser(responseJson));
+          navigation.replace('Map');
+        }
       } else {
       }
     } catch (err) {

@@ -1,12 +1,12 @@
 import {Layout, Button, Icon} from '@ui-kitten/components';
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Image, FlatList} from 'react-native';
 import CustomCard from '../components/customCard/index';
 import {useSelector} from 'react-redux';
 const addIcon = style => <Icon name="plus" />;
 const BinsScreen = props => {
   const state = useSelector(state => state);
-  console.log(state.BinState);
+
   return (
     <Layout
       style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -25,13 +25,12 @@ const BinsScreen = props => {
         style={{width: '100%', alignSelf: 'center', paddingLeft: 25}}
         data={state.BinState}
         renderItem={({item}) => {
-          console.log(item);
           return (
             <CustomCard
               Time={item.serviceTime}
               Cluster={item.Cluster.name}
               type={item.type}
-              id={item.id}
+              id={item._id}
               number={item.NumberInposition}
               type={item.type}
             />

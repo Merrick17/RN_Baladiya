@@ -1,29 +1,31 @@
 import AsyncStorage from '@react-native-community/async-storage';
-export const addBin = data => {
+export const addUser = data => {
   return {
-    type: 'ADD_BIN',
+    type: 'ADD_USER',
     data: data,
   };
 };
 
-export const getAllBins = data => {
+export const getAllUsers = data => {
   return {
-    type: 'GET_ALL_BINS',
+    type: 'GET_ALL_USERS',
     data: data,
   };
 };
 
-export const deleteBin = data => {
+export const deleteUser = data => {
   return {
-    type: 'DELETE_BIN',
+    type: 'DELETE_USER',
     data: data,
   };
 };
-export const addNewBin = (bin, navigator, userToken) => {
+export const addNewUser = (user, navigator, userToken) => {
+  console.log('Token', userToken);
+  console.log('User', user);
   return async dispatch => {
     try {
       let response = await fetch(
-        'https://desolate-ravine-46577.herokuapp.com/bin/add',
+        'https://desolate-ravine-46577.herokuapp.com/users/adduser',
         {
           method: 'POST',
           headers: {
@@ -31,24 +33,30 @@ export const addNewBin = (bin, navigator, userToken) => {
             Accept: 'application/json',
             'x-access-token': userToken,
           },
-          body: JSON.stringify(bin),
+          body: JSON.stringify(user),
         },
       );
 
+      console.log(response);
       let responseJson = await response.json();
+      console.log('Response JSON', responseJson);
       if (responseJson._id !== null) {
-        dispatch(fetchBins(userToken));
+        //dispatch(fetchBins(userToken));
         navigator.navigate('Main');
       }
-    } catch (err) {}
+      //console.log('Deleted', responseJson);
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 
-export const deleteBinData = (binId, userToken) => {
+export const deleteUserData = (binId, userToken) => {
+  //console.log('My Auth Token', userToken);
   return async dispatch => {
     try {
       let response = await fetch(
-        'https://desolate-ravine-46577.herokuapp.com/bin/' + binId,
+        'https://desolate-ravine-46577.herokuapp.com/users/delete/' + binId,
         {
           method: 'DELETE',
           headers: {
@@ -59,9 +67,10 @@ export const deleteBinData = (binId, userToken) => {
         },
       );
 
+      console.log(response);
       let responseJson = await response.json();
       if (responseJson.message == 'removed') {
-        dispatch(fetchBins(userToken));
+        dispatch(fetchUsers(userToken));
       }
       console.log('Deleted', responseJson);
     } catch (err) {
@@ -69,11 +78,11 @@ export const deleteBinData = (binId, userToken) => {
     }
   };
 };
-export const fetchBins = token => {
+export const fetchUsers = token => {
   return async dispatch => {
     try {
       let response = await fetch(
-        'https://desolate-ravine-46577.herokuapp.com/bin',
+        'https://desolate-ravine-46577.herokuapp.com/users',
         {
           method: 'GET',
           headers: {
@@ -84,18 +93,18 @@ export const fetchBins = token => {
         },
       );
       let responseJson = await response.json();
-
-      dispatch(getAllBins(responseJson.result));
+        console.log("Response JSON",responseJson); 
+      dispatch(getAllUsers(responseJson.users));
     } catch (err) {
       console.log(err);
     }
   };
 };
-export const fetchBinsByCluster = (clusterID, token) => {
+export const fetchUsersByType = (type, token) => {
   return async dispatch => {
     try {
       let response = await fetch(
-        'https://desolate-ravine-46577.herokuapp.com/bin/' + clusterID,
+        'https://desolate-ravine-46577.herokuapp.com/users/' + type,
         {
           method: 'GET',
           headers: {
@@ -107,7 +116,7 @@ export const fetchBinsByCluster = (clusterID, token) => {
       );
       let responseJson = await response.json();
 
-      dispatch(getAllBins(responseJson.result));
+      dispatch(getAllUsers(responseJson.result));
     } catch (err) {
       console.log(err);
     }

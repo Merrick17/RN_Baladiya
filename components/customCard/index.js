@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {Btnstyles} from './styles';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -34,7 +34,7 @@ export default CustomCard = props => {
         subtitle=""
         headerContainerStyles={{backgroundColor: '#698AC7'}}
         onRequestClose={() => {
-          console.log('closed');
+        
         }}>
         <SCLAlertButton
           theme="info"
@@ -47,9 +47,9 @@ export default CustomCard = props => {
           theme="info"
           onPress={() => {
             getToken().then(data => {
-              console.log('Daaaataaa', data);
+             
               let token = data;
-              console.log('retireve token');
+             
               dispatch(deleteBinData(props.id, JSON.parse(token)));
             });
 

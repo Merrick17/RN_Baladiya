@@ -77,9 +77,8 @@ const AddBin = props => {
           size={'large'}
           onPress={() => {
             getToken().then(data => {
-              //console.log('Daaaataaa', data);
               let token = data;
-              //console.log('retireve token');
+
               let bin = {
                 type: selectedIndex,
                 serviceTime: Number(service),
@@ -88,7 +87,7 @@ const AddBin = props => {
                 lat: Number(lat),
                 lng: Number(lng),
               };
-              console.log('Value', bin);
+
               dispatch(addNewBin(bin, props.navigation, JSON.parse(token)));
             });
 

@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 const addIcon = style => <Icon name="plus" />;
 const ClusterScreen = props => {
   const state = useSelector(state => state);
-  console.log(state)
+ 
   return (
     <Layout
       style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>

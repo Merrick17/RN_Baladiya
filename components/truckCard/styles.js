@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
 export const Btnstyles = StyleSheet.create({
   main: {
-    marginTop: 45,
+    marginVertical: 45,
     backgroundColor: '#698AC7',
     borderRadius: 10,
-    height: 240,
+    height: 365,
     //flexDirection: "row",
     alignContent: 'center',
     alignItems: 'flex-start',

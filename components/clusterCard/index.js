@@ -33,7 +33,7 @@ export default ClusterCard = props => {
         subtitle=""
         headerContainerStyles={{backgroundColor: '#698AC7'}}
         onRequestClose={() => {
-          console.log('closed');
+       
         }}>
         <SCLAlertButton
           theme="info"
@@ -46,9 +46,9 @@ export default ClusterCard = props => {
           theme="info"
           onPress={() => {
             getToken().then(data => {
-              console.log('Daaaataaa', data);
+            
               let token = data;
-              console.log('retireve token', );
+             
               dispatch(deleteClusterData(props.id,JSON.parse(token)));
             });
 

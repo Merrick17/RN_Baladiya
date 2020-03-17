@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 export const Btnstyles = StyleSheet.create({
   main: {
-    marginTop: 45,
+    marginVertical: 30,
     backgroundColor: '#698AC7',
     borderRadius: 10,
     height: 290,

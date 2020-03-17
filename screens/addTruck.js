@@ -9,18 +9,29 @@ import {
 } from '@ui-kitten/components';
 import React, {useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-
+import {useSelector, useDispatch} from 'react-redux';
+import {addNewTruck} from '../store/trucks/action';
+import {getToken} from '../helpers/tokenActions';
 const AddTruck = props => {
-  const data = [
-    {text: 'Option 1', value: 'text'},
-    {text: 'Option 2', value: 'text'},
-    {text: 'Option 3', value: 'text'},
-  ];
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState({
-    text: 'Option 1',
-    value: 'text',
+  const dispatch = useDispatch();
+  let data = [];
+  const state = useSelector(state => state);
+  state.UsersState.forEach(elm => {
+    if (elm.role == 0) {
+      let driver = {
+        text: elm.name + ' ' + elm.first_name,
+        value: elm._id,
+      };
+      data.push(driver);
+    }
   });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(data[0]);
+  const [carberon, setCarberon] = useState('');
+  const [capacity, setCapacity] = useState('');
+  const [maxTime, setMaxTime] = useState('');
+  const [maxTour, setMaxTour] = useState('');
+
   const onCheckedChange = index => {
     setSelectedIndex(index);
   };
@@ -31,26 +42,26 @@ const AddTruck = props => {
         <Input
           style={styles.input}
           placeholder="Carberon"
-          //value={value}
-          //onChangeText={setValue}
+          value={carberon}
+          onChangeText={text => setCarberon(text)}
         />
         <Input
           style={styles.input}
           placeholder="Capacity "
-          //value={value}
-          //onChangeText={setValue}
+          value={capacity}
+          onChangeText={text => setCapacity(text)}
         />
         <Input
           style={styles.input}
           placeholder="Max Time "
-          //value={value}
-          //onChangeText={setValue}
+          value={maxTime}
+          onChangeText={text => setMaxTime(text)}
         />
         <Input
           style={styles.input}
           placeholder="Max Tour Time "
-          //value={value}
-          //onChangeText={setValue}
+          value={maxTour}
+          onChangeText={text => setMaxTour(text)}
         />
         <Select
           data={data}
@@ -64,7 +75,17 @@ const AddTruck = props => {
           textStyle={{fontSize: 20}}
           size={'large'}
           onPress={() => {
-            props.navigation.navigate('Main');
+            getToken().then(data => {
+              let token = data;
+              let truck = {
+                Carberon: carberon,
+                Capacity: Number(capacity),
+                MaxTime: maxTime,
+                MaxTourTime: maxTour,
+                Driver: selectedOption.value,
+              };
+              dispatch(addNewTruck(truck, props.navigation, JSON.parse(token)));
+            });
           }}>
           Add
         </Button>
