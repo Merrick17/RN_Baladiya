@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 const addIcon = style => <Icon name="plus" />;
 const BinsScreen = props => {
   const state = useSelector(state => state);
-
+  //console.log('My Biiins', state.BinState);
   return (
     <Layout
       style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -25,16 +25,20 @@ const BinsScreen = props => {
         style={{width: '100%', alignSelf: 'center', paddingLeft: 25}}
         data={state.BinState}
         renderItem={({item}) => {
-          return (
-            <CustomCard
-              Time={item.serviceTime}
-              Cluster={item.Cluster.name}
-              type={item.type}
-              id={item._id}
-              number={item.NumberInposition}
-              type={item.type}
-            />
-          );
+          console.log('iteeem', item);
+          if (item.Cluster !== null) {
+            return (
+              <CustomCard
+                Time={item.serviceTime}
+                Cluster={item.Cluster.name}
+                type={item.type}
+                id={item._id}
+                number={item.NumberInposition}
+                type={item.type}
+                navigator={props.navigation}
+              />
+            );
+          }
         }}
         keyExtractor={item => item._id}
       />

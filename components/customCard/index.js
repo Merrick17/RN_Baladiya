@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {Btnstyles} from './styles';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -33,12 +33,14 @@ export default CustomCard = props => {
         title=""
         subtitle=""
         headerContainerStyles={{backgroundColor: '#698AC7'}}
-        onRequestClose={() => {
-        
-        }}>
+        onRequestClose={() => {}}>
         <SCLAlertButton
           theme="info"
           onPress={() => {
+            props.navigator.navigate('EditBin', {
+              service: props.Time,
+              type: props.type,
+            });
             setShow(false);
           }}>
           Edit
@@ -47,9 +49,8 @@ export default CustomCard = props => {
           theme="info"
           onPress={() => {
             getToken().then(data => {
-             
               let token = data;
-             
+
               dispatch(deleteBinData(props.id, JSON.parse(token)));
             });
 
@@ -69,6 +70,7 @@ export default CustomCard = props => {
       </SCLAlert>
       <Button
         style={styles.btn}
+        appearance={'outline'}
         onPress={() => {
           setShow(true);
         }}>
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: '90%',
+    marginTop: 3,
     //marginLeft:10,
     alignSelf: 'center',
   },

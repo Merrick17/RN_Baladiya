@@ -43,6 +43,30 @@ export const addNewBin = (bin, navigator, userToken) => {
     } catch (err) {}
   };
 };
+export const updateBin = (bin, userId, navigator, userToken) => {
+  return async dispatch => {
+    try {
+      let response = await fetch(
+        'https://desolate-ravine-46577.herokuapp.com/bin/' + userId,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            'x-access-token': userToken,
+          },
+          body: JSON.stringify(bin),
+        },
+      );
+
+      let responseJson = await response.json();
+      if (responseJson._id !== null) {
+        dispatch(fetchBins(userToken));
+        navigator.navigate('Main');
+      }
+    } catch (err) {}
+  };
+};
 
 export const deleteBinData = (binId, userToken) => {
   return async dispatch => {
@@ -84,7 +108,7 @@ export const fetchBins = token => {
         },
       );
       let responseJson = await response.json();
-
+      //console.log("All Bins",responseJson.result);
       dispatch(getAllBins(responseJson.result));
     } catch (err) {
       console.log(err);
@@ -106,7 +130,7 @@ export const fetchBinsByCluster = (clusterID, token) => {
         },
       );
       let responseJson = await response.json();
-
+      console.log('FETCHED BINS', responseJson);
       dispatch(getAllBins(responseJson.result));
     } catch (err) {
       console.log(err);

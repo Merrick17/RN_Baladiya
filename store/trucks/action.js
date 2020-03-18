@@ -49,6 +49,36 @@ export const addNewTruck = (truck, navigator, userToken) => {
     }
   };
 };
+export const updateTruck = (truck, truckId, navigator, userToken) => {
+  console.log('Truck', userToken);
+  return async dispatch => {
+    try {
+      let response = await fetch(
+        'https://desolate-ravine-46577.herokuapp.com/truck/add',
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            'x-access-token': userToken,
+          },
+          body: JSON.stringify(truck),
+        },
+      );
+
+      //console.log(response);
+      let responseJson = await response.json();
+      console.log('Response JSON', responseJson);
+      if (responseJson._id !== null) {
+        dispatch(fetchTrucks(userToken));
+        navigator.navigate('Main');
+      }
+      //console.log('Deleted', responseJson);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
 
 export const deleteTruckData = (truckId, userToken) => {
   //console.log('My Auth Token', userToken);

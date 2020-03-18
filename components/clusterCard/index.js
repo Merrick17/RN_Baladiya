@@ -13,7 +13,8 @@ export default ClusterCard = props => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const state = useState(state => state);
-
+  //console.log("id",props.id); 
+  const userId = props.id ;
   return (
     <View style={Btnstyles.main}>
       <Image
@@ -32,12 +33,15 @@ export default ClusterCard = props => {
         title=""
         subtitle=""
         headerContainerStyles={{backgroundColor: '#698AC7'}}
-        onRequestClose={() => {
-       
-        }}>
+        onRequestClose={() => {}}>
         <SCLAlertButton
           theme="info"
           onPress={() => {
+            props.navigator.navigate('EditCluster', {
+              id: userId,
+              name: props.name,
+              nbr: props.totalBin,
+            });
             setShow(false);
           }}>
           Edit
@@ -46,10 +50,9 @@ export default ClusterCard = props => {
           theme="info"
           onPress={() => {
             getToken().then(data => {
-            
               let token = data;
-             
-              dispatch(deleteClusterData(props.id,JSON.parse(token)));
+
+              dispatch(deleteClusterData(props.id, JSON.parse(token)));
             });
 
             //

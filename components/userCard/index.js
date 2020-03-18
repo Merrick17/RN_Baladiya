@@ -8,13 +8,13 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Avatar, Layout, Button} from '@ui-kitten/components';
 import {SCLAlert, SCLAlertButton} from 'react-native-scl-alert';
 import {deleteUserData} from '../../store/users/actions';
+import {useDispatch} from 'react-redux';
 export default UserCard = props => {
   const [show, setShow] = useState(false);
-  getActionSheetRef = ref => (actionSheet = ref);
-
-  handlePress = index => {
+  const dispatch = useDispatch();
+  /*handlePress = index => {
     SetSelected(index);
-  };
+  };*/
   return (
     <View style={Btnstyles.main}>
       <Image
@@ -41,6 +41,14 @@ export default UserCard = props => {
         <SCLAlertButton
           theme="info"
           onPress={() => {
+            //console.log(props.navigator);
+            props.navigator.navigate('EditUser', {
+              id: props.id,
+              name: props.name,
+              firstname: props.firstName,
+              type: props.type,
+              auth: props.auth,
+            });
             setShow(false);
           }}>
           Edit
@@ -67,6 +75,7 @@ export default UserCard = props => {
       </SCLAlert>
       <Button
         style={styles.btn}
+        appearance={'outline'}
         onPress={() => {
           setShow(true);
         }}>
@@ -99,6 +108,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: '90%',
+    marginTop: 3,
     //marginLeft:10,
     alignSelf: 'center',
   },

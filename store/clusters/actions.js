@@ -47,6 +47,35 @@ export const addNewCluster = (cluster, navigator, userToken) => {
     }
   };
 };
+export const UpdateCluster = (cluster, clusterId, navigator, userToken) => {
+  return async dispatch => {
+    try {
+      let response = await fetch(
+        'https://desolate-ravine-46577.herokuapp.com/cluster/update/' +
+          clusterId,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            'x-access-token': userToken,
+          },
+          body: JSON.stringify(cluster),
+        },
+      );
+
+      console.log(response);
+      let responseJson = await response.json();
+      if (responseJson._id !== null) {
+        dispatch(fetchClusters(userToken));
+        navigator.navigate('Main');
+      }
+      console.log('Deleted', responseJson);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
 
 export const deleteClusterData = (clusterid, userToken) => {
   console.log('My Auth Token', userToken);

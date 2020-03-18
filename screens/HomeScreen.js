@@ -45,16 +45,6 @@ const HomeScreen = props => {
           }}>
           Sign in{' '}
         </Button>
-        <Button
-          style={styles.btn}
-          status="danger"
-          textStyle={{fontSize: 20}}
-          size={'large'}
-          onPress={() => {
-            props.navigation.navigate('Map');
-          }}>
-          Sign in{' '}
-        </Button>
       </Layout>
     </Layout>
   );

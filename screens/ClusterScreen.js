@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 const addIcon = style => <Icon name="plus" />;
 const ClusterScreen = props => {
   const state = useSelector(state => state);
- 
+
   return (
     <Layout
       style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -21,11 +21,18 @@ const ClusterScreen = props => {
         }}>
         Add A New Cluster
       </Button>
-      <FlatList style={{width:'100%',alignSelf:'center',paddingLeft:25}}
+      <FlatList
+        style={{width: '100%', alignSelf: 'center', paddingLeft: 25}}
         data={state.clusterState}
         renderItem={({item}) => {
-         
-          return <ClusterCard name={item.name} totalBin={item.totalBinNmbr} id={item._id}/>;
+          return (
+            <ClusterCard
+              name={item.name}
+              totalBin={item.totalBinNmbr}
+              id={item._id}
+              navigator={props.navigation}
+            />
+          );
         }}
         keyExtractor={item => item._id}
       />

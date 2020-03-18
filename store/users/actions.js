@@ -50,7 +50,37 @@ export const addNewUser = (user, navigator, userToken) => {
     }
   };
 };
+export const UpdateUser = (user, id, navigator, userToken) => {
+  console.log('Token', userToken);
+  console.log('User', user);
+  return async dispatch => {
+    try {
+      let response = await fetch(
+        'https://desolate-ravine-46577.herokuapp.com/users/' + id,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            'x-access-token': userToken,
+          },
+          body: JSON.stringify(user),
+        },
+      );
 
+      console.log(response);
+      let responseJson = await response.json();
+      console.log('Response JSON', responseJson);
+      if (responseJson._id !== null) {
+        //dispatch(fetchBins(userToken));
+        navigator.navigate('Main');
+      }
+      //console.log('Deleted', responseJson);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
 export const deleteUserData = (binId, userToken) => {
   //console.log('My Auth Token', userToken);
   return async dispatch => {
@@ -93,7 +123,7 @@ export const fetchUsers = token => {
         },
       );
       let responseJson = await response.json();
-        console.log("Response JSON",responseJson); 
+      console.log('Response JSON', responseJson);
       dispatch(getAllUsers(responseJson.users));
     } catch (err) {
       console.log(err);

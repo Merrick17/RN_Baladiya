@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 
 const UsersScreen = props => {
   const state = useSelector(state => state);
-  console.log(state.UsersState);
+  //console.log(state.UsersState);
   return (
     <Layout
       style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -32,6 +32,7 @@ const UsersScreen = props => {
               auth={item.auth_id}
               type={item.role}
               id={item._id}
+              navigator={props.navigation}
             />
           );
         }}

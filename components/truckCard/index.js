@@ -6,7 +6,8 @@ import {getToken} from '../../helpers/tokenActions';
 import {Text} from 'galio-framework';
 import LinearGradient from 'react-native-linear-gradient';
 import {Avatar, Layout, Button} from '@ui-kitten/components';
-import { deleteTruckData } from '../../store/trucks/action';
+import {SCLAlert, SCLAlertButton} from 'react-native-scl-alert';
+import {deleteTruckData} from '../../store/trucks/action';
 export default TruckCard = props => {
   const [show, setShow] = useState(false);
   return (
@@ -38,13 +39,6 @@ export default TruckCard = props => {
         <SCLAlertButton
           theme="info"
           onPress={() => {
-            setShow(false);
-          }}>
-          Edit
-        </SCLAlertButton>
-        <SCLAlertButton
-          theme="info"
-          onPress={() => {
             getToken().then(data => {
               let token = data;
 
@@ -65,7 +59,14 @@ export default TruckCard = props => {
           Cancel
         </SCLAlertButton>
       </SCLAlert>
-      <Button style={styles.btn}>Actions</Button>
+      <Button
+        style={styles.btn}
+        appearance={'outline'}
+        onPress={() => {
+          setShow(true);
+        }}>
+        Actions
+      </Button>
     </View>
   );
 };
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: '90%',
+    marginTop: 3,
     //marginLeft:10,
     alignSelf: 'center',
   },

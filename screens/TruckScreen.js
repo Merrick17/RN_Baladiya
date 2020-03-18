@@ -33,6 +33,7 @@ const TruckScreen = props => {
               maxTourTime={item.MaxTourTime}
               driver={item.User.name + '' + item.User.first_name}
               id={item._id}
+              navigator={props.navigation}
             />
           );
         }}
