@@ -5,6 +5,7 @@ import Geolocation from '@react-native-community/geolocation';
 import {useSelector} from 'react-redux';
 import {coordinatations} from '../helpers/coordinations';
 import {lineString as makeLineString} from '@turf/helpers';
+import {polygon as makePolygon} from '@turf/helpers';
 const MapScreen = () => {
   const state = useSelector(state => state);
   //console.log(state.BinState);
@@ -12,20 +13,12 @@ const MapScreen = () => {
   MapboxGL.setAccessToken(
     'pk.eyJ1IjoibWVycmljazE3IiwiYSI6ImNrNW1qNGNhejAyZDYzbm5zc2gxbm43ZHkifQ.kJHwGdb3NjNno06-kr3r7Q',
   );
-  const [coord, setCoordinates] = useState({
-    type: 'FeatureCollection',
-    features: [
-      {
-        type: 'Feature',
-        properties: {},
-        geometry: {
-          type: 'LineString',
-          coordinates: coordinatations(state.BinState),
-        },
-      },
-    ],
-  });
-
+  //const [coord, setCoordinates] = useState(lin);
+  const lineRoute = makeLineString(coordinatations(state.BinState));
+  const boundsStyle = {
+    fillColor: 'rgba(255, 255, 255, 0.4)',
+    fillOutlineColor: 'white',
+  };
   return (
     <View style={styles.page}>
       <View style={styles.container}>
@@ -51,8 +44,8 @@ const MapScreen = () => {
             id={'002'}
             title="Decharge"
             coordinate={[35.785497, 10.58179]}></MapboxGL.PointAnnotation>
-          <MapboxGL.ShapeSource id="routeSource" shape={coord}>
-            <MapboxGL.LineLayer id="linelayer1" style={{lineColor: 'red'}} />
+          <MapboxGL.ShapeSource id="routeSource" shape={lineRoute}>
+            <MapboxGL.FillLayer id="boundsFill" style={boundsStyle} />
           </MapboxGL.ShapeSource>
         </MapboxGL.MapView>
       </View>

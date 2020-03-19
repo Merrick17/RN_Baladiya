@@ -6,6 +6,7 @@ export const coordinatations = cordinations => {
     let cord = [element.lng, element.lat];
     finalInfo.push(cord);
   });
+  console.log('Final Info', finalInfo);
   /*const line = makeLineString(finalInfo);
   console.log('Final Info', finalInfo);
   return line;*/
