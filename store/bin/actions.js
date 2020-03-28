@@ -130,7 +130,7 @@ export const fetchBinsByCluster = (clusterID, token) => {
         },
       );
       let responseJson = await response.json();
-      console.log('FETCHED BINS', responseJson);
+      //console.log('FETCHED BINS', responseJson.result);
       dispatch(getAllBins(responseJson.result));
     } catch (err) {
       console.log(err);

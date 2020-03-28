@@ -2,15 +2,22 @@ import {Icon, Input, Layout, Button} from '@ui-kitten/components';
 import React, {useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {asyncloginUser} from '../store/loggedIn/actions';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import Spinner from 'react-native-loading-spinner-overlay';
 const HomeScreen = props => {
   const dispatch = useDispatch();
+  const state = useSelector(state => state);
   [authId, setAuthID] = useState('');
   [password, setPassword] = useState('');
   return (
     <Layout
       style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
       <Layout style={styles.login}>
+        <Spinner
+          visible={state.spinnerState}
+          textContent={'Loading...'}
+          textStyle={styles.spinnerTextStyle}
+        />
         <Image source={require('../assets/recycle.png')} style={styles.logo} />
         <Input
           style={styles.input}
@@ -70,5 +77,8 @@ const styles = StyleSheet.create({
   btn: {
     marginTop: 25,
     fontSize: 24,
+  },
+  spinnerTextStyle: {
+    color: '#FFF',
   },
 });

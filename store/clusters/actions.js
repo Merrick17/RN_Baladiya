@@ -35,13 +35,13 @@ export const addNewCluster = (cluster, navigator, userToken) => {
         },
       );
 
-      console.log(response);
+      //(response);
       let responseJson = await response.json();
       if (responseJson._id !== null) {
         dispatch(fetchClusters(userToken));
         navigator.navigate('Main');
       }
-      console.log('Deleted', responseJson);
+      //console.log('Deleted', responseJson);
     } catch (err) {
       console.log(err);
     }
@@ -64,13 +64,13 @@ export const UpdateCluster = (cluster, clusterId, navigator, userToken) => {
         },
       );
 
-      console.log(response);
+      //console.log(response);
       let responseJson = await response.json();
       if (responseJson._id !== null) {
         dispatch(fetchClusters(userToken));
         navigator.navigate('Main');
       }
-      console.log('Deleted', responseJson);
+     // console.log('Deleted', responseJson);
     } catch (err) {
       console.log(err);
     }
@@ -78,7 +78,7 @@ export const UpdateCluster = (cluster, clusterId, navigator, userToken) => {
 };
 
 export const deleteClusterData = (clusterid, userToken) => {
-  console.log('My Auth Token', userToken);
+  //console.log('My Auth Token', userToken);
   return async dispatch => {
     try {
       let response = await fetch(
@@ -94,12 +94,12 @@ export const deleteClusterData = (clusterid, userToken) => {
         },
       );
 
-      console.log(response);
+      //console.log(response);
       let responseJson = await response.json();
       if (responseJson.message == 'removed') {
         dispatch(fetchClusters(userToken));
       }
-      console.log('Deleted', responseJson);
+     // console.log('Deleted', responseJson);
     } catch (err) {
       console.log(err);
     }
