@@ -40,6 +40,7 @@ export default CustomCard = props => {
             props.navigator.navigate('EditBin', {
               service: props.Time,
               type: props.type,
+              number: props.number,
             });
             setShow(false);
           }}>
