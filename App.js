@@ -19,7 +19,7 @@ import {store} from './store/index';
 import EditUser from './screens/EditUser';
 import EditCluster from './screens/EditCluster';
 import EditBin from './screens/EditBin';
-
+import {default as customTheme} from './assets/custom-theme.json'; 
 const NavigationStack = createStackNavigator(
   {
     Login: {screen: HomeScreen},
@@ -46,9 +46,11 @@ const NavigationStack = createStackNavigator(
 );
 
 const App = () => {
+  const theme = { ...lightTheme, ...customTheme };
+  console.disableYellowBox = true;
   const Navigation = createAppContainer(NavigationStack);
   return (
-    <ApplicationProvider mapping={mapping} theme={lightTheme}>
+    <ApplicationProvider mapping={mapping} theme={theme}>
       <Provider store={store}>
         <Navigation />
       </Provider>

@@ -23,6 +23,7 @@ const chartConfig = {
 const MainScreen = props => {
   const state = useSelector(state => state);
   const dispatcher = useDispatch();
+  console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
   let currentData = [];
   state.clusterState.forEach(element => {
     let elm = {

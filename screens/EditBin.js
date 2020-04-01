@@ -24,10 +24,10 @@ const EditBin = props => {
     data.push(cluster);
   });
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(props.navigation.getParam('type'));
   const [selectedOption, setSelectedOption] = useState(data[0]);
-  const [service, setService] = useState('');
-  const [nbr, setNumber] = useState('');
+  const [service, setService] = useState(props.navigation.getParam('service'));
+  const [nbr, setNumber] = useState(props.navigation.getParam('number'));
   const [lat, setlat] = useState('');
   const [lng, setLng] = useState('');
   const onCheckedChange = index => {
